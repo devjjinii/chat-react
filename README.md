@@ -8,7 +8,7 @@
 * npm install firebase
 * Firebase > https://firebase.google.com/
   * RTSP ( Real Time Stream Protocol )
-  
+* Version9 > https://firebase.google.com/docs/web/learn-more?authuser=0#modular-version  
 ---
 * VSCode 확장프로그램 
    * ES7 React/Redux/GraphQL/React-Native snippets 추가 -- rfce 사용
