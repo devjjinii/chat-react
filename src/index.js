@@ -8,7 +8,9 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
-import Reducer from './redux/reducers'
+import Reducer from './redux/reducers';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // 리덕스는 객체만 받을수 있는데 함수랑 프로미스를 받기위해 미들웨어 사용
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
