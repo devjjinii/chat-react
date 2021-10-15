@@ -14,15 +14,16 @@
   * RTSP ( Real Time Stream Protocol )
 * Version9 > https://firebase.google.com/docs/web/learn-more?authuser=0#modular-version  
 ---
-* 파이어베이스 실시간 DB 추가
-```js
-const firebaseConfig = {
-  apiKey: "apiKey",
-  // ....
-  databaseURL: "https://databaseName.firebaseio.com",
-  // For example, https://your-database-123.europe-west1.firebasedatabase.app
-};
-```
+* Firebase Realtime Database
+  * firebase.js 에 `databaseURL` 추가
+    ```js
+    const firebaseConfig = {
+      apiKey: "apiKey",
+      // ....
+      databaseURL: "https://databaseName.firebaseio.com",
+      // For example, https://your-database-123.europe-west1.firebasedatabase.app
+    };
+    ```
 ---
 * UI
   * https://react-hook-form.com/kr/get-started/
