@@ -6,6 +6,7 @@
 * npm install redux react-redux redux-promise redux-thunk
 * npm install bootstrap react-bootstrap
 * npm install react-icons
+* npm install react-hook-form
 ---
 * npm install firebase
 * Firebase > https://firebase.google.com/
