@@ -7,11 +7,22 @@
 * npm install bootstrap react-bootstrap
 * npm install react-icons
 * npm install react-hook-form
+* npm install md5
 ---
 * npm install firebase
 * Firebase > https://firebase.google.com/
   * RTSP ( Real Time Stream Protocol )
 * Version9 > https://firebase.google.com/docs/web/learn-more?authuser=0#modular-version  
+---
+* 파이어베이스 실시간 DB 추가
+```js
+const firebaseConfig = {
+  apiKey: "apiKey",
+  // ....
+  databaseURL: "https://databaseName.firebaseio.com",
+  // For example, https://your-database-123.europe-west1.firebasedatabase.app
+};
+```
 ---
 * UI
   * https://react-hook-form.com/kr/get-started/

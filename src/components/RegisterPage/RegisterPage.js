@@ -1,27 +1,50 @@
 import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import app from '../../firebase';
+import md5 from 'md5';
+import { getDatabase, ref, set } from "firebase/database";
 
 function RegisterPage() {
 
     const { register, watch, handleSubmit, formState: { errors } } = useForm();
     const [ errorFromSubmit, setErrorFromSubmit] = useState("");
+    const [ loading, setLoading ] = useState(false);
 
     const password = useRef();  // 모듈때문에 state로 비교하지 않음.
     password.current = watch("password");
 
     // console.log(watch("email"));
     const onSubmit = async (data) => {
-
+    // 파이어베이스를 통해 이메일과 패스워드로 유저 생성.
         try {
+            setLoading(true);      
+            // 비밀번호 기반 계정 만들기
+            //https://firebase.google.com/docs/auth/web/password-auth#sign_in_a_user_with_an_email_address_and_password
             const auth = getAuth(app);
             let createdUser  = await createUserWithEmailAndPassword(auth, data.email, data.password);            
-            console.log(createdUser);
+            console.log("createdUser", createdUser);
+
+            // 사용자 프로필 업데이트 https://firebase.google.com/docs/auth/web/manage-users
+            await updateProfile(auth.currentUser, {
+                displayName: data.name,
+                photoURL: `http://gravatar.com/avatar/${md5(createdUser.user.email)}?d=identicon`
+            });
+
+            // 파이어베이스 데이터베이스에 저장 
+            // 기본 쓰기 작업 https://firebase.google.com/docs/database/web/read-and-write
+            const db = getDatabase(app);
+            await set(ref(db, 'users/' + createdUser.user.uid), {
+                name : createdUser.user.displayName,
+                image: createdUser.user.photoURL
+            });
+
+            setLoading(false);
 
         } catch (error) {
             setErrorFromSubmit(error.message);
+            setLoading(false);
             setTimeout(() => {
                 setErrorFromSubmit(error.message)
             }, 5000);
@@ -62,7 +85,7 @@ function RegisterPage() {
                 {errorFromSubmit && 
                     <p>{errorFromSubmit}</p>}
 
-                <input type="submit" />
+                <input type="submit" disabled={loading}/>
 
                 <Link style={{color:'gray', textDecoration: 'none'}} to="login">이미 아이디가 있다면</Link>
             </form>
