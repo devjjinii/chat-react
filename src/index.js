@@ -12,6 +12,8 @@ import Reducer from './redux/reducers';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { BrowserRouter as Router} from "react-router-dom";
+
 // 리덕스는 객체만 받을수 있는데 함수랑 프로미스를 받기위해 미들웨어 사용
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
 
@@ -21,7 +23,9 @@ ReactDOM.render(
       window.__REDUX_DEVTOOLS_EXTENSION__ &&
       window.__REDUX_DEVTOOLS_EXTENSION__()
       )}>
-      <App />
+      <Router>
+        <App />
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

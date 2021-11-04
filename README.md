@@ -28,6 +28,9 @@
 * UI
   * https://react-hook-form.com/kr/get-started/
    * npm install react-hook-form
+* Router (history.push)
+  <img width="342" src="https://user-images.githubusercontent.com/53853730/140247139-7dc3e806-c6f8-4147-a103-41cb534f7090.png">
+
 ---
 * VSCode 확장프로그램 
    * ES7 React/Redux/GraphQL/React-Native snippets 추가 -- rfce 사용

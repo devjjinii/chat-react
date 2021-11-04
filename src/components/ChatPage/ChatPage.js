@@ -1,4 +1,5 @@
 import React from 'react'
+// import { withRouter } from 'react-router-dom';
 
 function ChatPage() {
     return (
@@ -8,4 +9,5 @@ function ChatPage() {
     )
 }
 
+// export default withRouter(ChatPage)
 export default ChatPage
