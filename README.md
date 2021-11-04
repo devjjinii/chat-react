@@ -13,6 +13,8 @@
 * Firebase > https://firebase.google.com/
   * RTSP ( Real Time Stream Protocol )
 * Version9 > https://firebase.google.com/docs/web/learn-more?authuser=0#modular-version  
+* Storage
+  * asia-notrheast3
 ---
 * Firebase Realtime Database
   * firebase.js 에 `databaseURL` 추가
@@ -28,6 +30,8 @@
 * UI
   * https://react-hook-form.com/kr/get-started/
    * npm install react-hook-form
+* Icons   
+   * https://react-icons.github.io/react-icons/
 * Router (history.push)
   * <img width="342" src="https://user-images.githubusercontent.com/53853730/140247139-7dc3e806-c6f8-4147-a103-41cb534f7090.png">
 

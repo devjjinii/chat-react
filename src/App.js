@@ -18,7 +18,8 @@ import app from './firebase';
 
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  setUser
+  setUser,
+  clearUser
 } from './redux/actions/user_action';
 
 function App(props) {
@@ -36,6 +37,7 @@ function App(props) {
         dispatch(setUser(user))
       } else {
         history.push("/login"); // 로그인페이지
+        dispatch(clearUser())
       }
     })
   },[]);
