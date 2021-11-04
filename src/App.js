@@ -16,32 +16,48 @@ import RegisterPage from './components/RegisterPage/RegisterPage';
 
 import app from './firebase';
 
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setUser
+} from './redux/actions/user_action';
+
 function App(props) {
 
   let history = useHistory();
+  let dispatch = useDispatch();
+  const isLoading = useSelector(state => state.user.isLoading);
 
   useEffect(() => {
     const auth = getAuth(app);
     onAuthStateChanged(auth, user => {
       // console.log('user', user);
-      // 로그인이 된 상태
-      if(user) {
+      if(user) {   // 로그인이 된 상태
         history.push("/"); // 채팅페이지
+        dispatch(setUser(user))
       } else {
         history.push("/login"); // 로그인페이지
       }
     })
-  });
+  },[]);
 
-  return (
-    // <Route>
-      <Switch>
-        <Route exact path="/" component={ChatPage} />
-        <Route exact path="/login" component={LoginPage} />
-        <Route exact path="/register" component={RegisterPage} />
-      </Switch>
-    // </Router>
-  );
+  if (isLoading) {
+    return (
+      <div>
+        ...loading
+      </div>
+    )
+  } else {
+      return (
+        // <Route>
+          <Switch>
+            <Route exact path="/" component={ChatPage} />
+            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/register" component={RegisterPage} />
+          </Switch>
+        // </Router>
+      );
+  }
+  
 }
 
 export default App;
